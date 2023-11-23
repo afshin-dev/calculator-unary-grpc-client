@@ -1,0 +1,26 @@
+syntax = "proto3" ;
+
+package calculator ;
+
+option go_package = "./calculator" ;
+
+enum Operation {
+  ADD = 0 ;
+  SUB = 1 ;
+  MUL = 3 ;
+  DIV = 4 ;
+}
+message CalculateRequest {
+  int64 lhs = 1 ;
+  int64 rhs = 2 ;
+  Operation operation = 3 ;
+}
+
+message  CalculateResponse {
+  int64 result = 1 ;
+}
+
+
+service Calculate {
+  rpc execute(CalculateRequest) returns (CalculateResponse) {}
+}
